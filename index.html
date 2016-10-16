@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<!-- todaymade -->
+<html lang="en">
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<!-- /Bootstrap -->
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="css/homepageStyle.css">
+<!-- /Custom CSS -->
+<link rel="stylesheet" type="text/css" href="css/flip-box.css">
+
+<link rel="shortcut icon" href="css/images/icon.ico" type="image/x-icon">
+<link rel="icon" href="css/images/icon.ico" type="image/x-icon">
+
+<script src="js/parallax.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Conor D'Arcy">
+<title>Brighton Advisors</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','http://google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74730043-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script>
+$(document).ready
+(
+	function()
+	{
+		$("#daveRamsey").hover(function(){$("#flipTarget").toggleClass("ifb-hover")},function(){$("#flipTarget").toggleClass("ifb-hover")});
+		$('[data-toggle="tooltip"]').tooltip(); 
+		$(".changeGreen").hover(function(){
+    		$(this).toggleClass("btn-green");
+    		}, function(){
+    		$(this).toggleClass("btn-green");
+			});
+
+		if ("ontouchstart" in document.documentElement==false)
+		{
+  			$(".panel-heading").hover(function(){
+    		$(this).toggleClass("panel-hover");
+    		}, function(){
+    		$(this).toggleClass("panel-hover");
+			});
+		}
+		$('#navMain').css("opacity",1);
+    }
+
+
+);
+
+
+
+jQuery(function($){
+
+$(window).scroll(
+	function()
+	{if( $(this).scrollTop() == 0 ) 
+		{$('#navMain').css("opacity",1)}
+else
+	{
+		$('#navMain').css("opacity",.9)
+	}
+
+
+
+})
+
+});
+function playPause()
+{
+	var video = document.getElementById("video");
+	if(video.paused)
+    {    
+        video.play();
+    	//$("#video").attr("controls",true);
+    	$("#playButton").css("visibility","hidden");
+    }
+    else
+    {
+        video.pause();
+    	//$("#video").removeAttr("controls");
+    	$("#playButton").css("visibility","visible");
+    }
+}
+</script>
+
+
+	<body>
+	<div class="container-fluid" style='font-family:"DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;''>
+<!-- <div id="navMain" style="opacity:none;" class="navbar navbar-default navbar-transparent navbar-fixed-top" role="navigation">
+	    <div class="navbar-header">
+    	
+    	<a href="index.html" class="pull-left"><img src="css/images/header.jpg" style="height: auto; width: auto; max-height: 45px; padding-top:5px;"></a>
+    	
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+        </button> 
+    </div>
+    <div class="collapse navbar-collapse navbar-menubuilder">
+    
+        <ul class="nav navbar-nav navbar-right "style="margin-right:1%;">
+            <div class="navbar-text"style="padding-top:0px;"><span style="color:#6FB353;padding-right:5px;"class="glyphicon glyphicon-phone-alt"></span>(559)123-4567</div>
+            <li><a href="aboutUs.html">About Us</a>
+            </li>
+            <li><a href="contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+	</div>
+</div> -->
+		<div id="navMain" style="opacity:.9;" class="navbar navbar-default navbar-transparent navbar-fixed-top" role="navigation">
+	
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a href="index.html" class="pull-left"><img src="css/images/header.jpg" style="height: 60px; width: auto; max-height: 60px; padding-top:5px;padding-left: 60px;"></a>
+	</div>
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav pull-right" >
+			<li><a class="changeGreen mobileShow" href="index.html" >Home</a></li>
+      		<li><a class="changeGreen mobileShow" href="daveRamsey.html">Dave Ramsey</a></li>
+      		<li><a class="changeGreen mobileShow" href="contactUs.html">Contact Us</a></li>
+			<a href="http://brokercheck.finra.org" target="_blank"><img src="css/images/brokerCheck.jpg" style="height: 40px; width: auto; padding-left:5px;padding-top:20px;padding-right: 5px;"></a>
+			<div id="phoneNumber" class="navbar-text"><span style="color:#6FB353;padding-right:5px;line-height: 30px;" class="glyphicon glyphicon-phone-alt"></span>(559) 320 0285</div>
+
+			<li><a href="https://myaccountviewonline.com/AccountView/" ><span style="line-height: 30px">Account Login</span></a></li>
+			
+			<li class="dropdown dropdown-menu-right pull-right mobileHide" style="height:60px;">
+      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:60px">
+      				<span class="glyphicon glyphicon-menu-hamburger" style="font-size:20px;line-height: 30px;">
+      				</span>
+      			</a>
+      			
+      			<ul class="dropdown-menu pull-right">
+            		<li>
+            			<a class="changeGreen" href="index.html" >Home</a>
+            		</li>
+            		<!-- LITE <li>
+            			<a class="changeGreen" href="whatMakesUsDifferent.html">Why us?</a>
+            		</li> -->
+            		<li>
+            			<a class="changeGreen" href="daveRamsey.html">Dave Ramsey</a>
+            		</li>
+            		<!-- LITE<li>
+            			<a class="changeGreen" href="aboutUs.html">About us</a>
+            		</li> -->
+            		<li>
+            			<a class="changeGreen" href="contactUs.html">Contact Us</a>
+            		</li>
+      			</ul>
+   			</li>
+  		</ul>
+	</div>
+
+</div>
+
+		<div id="header" class=" parallax-window" data-parallax="scroll" data-speed="0" data-position="top top" data-image-src="css/images/familyOverlay62Lower.jpg">
+			<div class="headerText" style="padding-top:200px;">Advisors with the heart of a teacher</div>
+	  		<div class="subText">A place where the investing experience is not just<br> about numbers, it is about people.</div>
+			<img src="css/images/brightonStamp.png" style="height:175px;margin-right:80%;margin-top:15%">
+		</div>
+
+		<div id="bioDiv">
+			<div class="row" style="height:auto;padding-top:20px;">
+				<div class="col-sm-2 bioPhoto" style="padding-left:50px;">
+					<img style="height:200px;margin-top:50px;box-shadow: 5px 5px 5px #888888;" src="css/images/newNick.jpg" class="img-circle">  
+				</div>
+				<div class="col-sm-4 bio-left">
+					<div class="bioText" style="margin-left:20px;">
+						<div style="font-size: 30px; margin-top:40px;">Nicholas W. Maxwell</div><br><div style="font-size:22px;margin-top:-20px;">Founding Partner</div>
+						<a href="mailto:Nick.Maxwell@BrightonAdvisors.com" style="font-size:15px;margin-top:0px;">Nick.Maxwell@BrightonAdvisors.com</a>
+					</div>
+				</div> 
+				<div class="col-sm-2 bioPhoto" style="padding-left:50px;">  
+					<img style="height: 200px;margin-top:50px;box-shadow: 5px 5px 5px #888888;" src="css/images/newArlie.jpg" class="img-circle">
+				</div>
+				<div class="col-sm-4 bio-left">
+					<div class="bioText" style="margin-left:20px;">
+						<div style="font-size: 30px; margin-top:40px;">Arlie A. Rogers Jr.</div><br><div style="font-size:22px;margin-top:-20px;">Founding Partner</div>
+						<a href="mailto:Arlie.Rogers@BrightonAdvisors.com" style="font-size:15px;margin-top:0px;">Arlie.Rogers@BrightonAdvisors.com</a>
+					</div>
+				</div> 
+			</div>
+		</div>
+
+
+
+
+		<div id="infoDiv" style="display: table-cell;vertical-align: middle; padding-top:50px;">
+			
+			<div class="row">
+				<span style="font-size:30px;" class="title"> Advice With A Purpose</span>
+				<div class="separator-container">
+					<div class="separator line-separator">∎</div>
+				</div>
+			</div>
+			<div class="row" style="padding-bottom:30px;">
+				<div class="col-sm-4">
+					<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="display: block; margin: 0px auto; text-align: center;color:#6FB353;font-size:75px;padding-top:30px;"></span>
+					<span style="font-size:22px;"class="title">WHAT WE DO</span>		
+					<span style='display: block; margin: 0px auto; text-align:center;font-size:16px;color:#777; padding-top:0px;width:80%;''>
+					<span style="color:black">Our job is to guide and inspire you to a brighter, more confident <a onclick="$('#modal1').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Jeremiah 29:11">future</a>. </span>Financial security is achieved through saving, planning, investments, and insurance. We help you blend these together in a thoughtfully concise way so that you know where you want to go and you understand how you are going to get there.</span>
+				</div>
+				<div class="col-sm-4">
+					<span class="glyphicon glyphicon-home" aria-hidden="true" style="display: block; text-align: center;color:#6FB353;font-size:75px;padding-top:30px;margin-right:5px;"></span>
+					<span class="title" style="font-size:22px;">WHY WE DO IT</span>
+					<span style='display: block; margin: 0px auto; text-align:center;font-size:16px;color:#777;font-weight:100; padding-top:0px;width:80%;'>
+					<span style="color:black">When you're confident in your future, you can live more <a style="color:#6FB353;text-decoration:underline;cursor:pointer;" onclick="$('#modal2').modal('toggle');" data-placement="top" data-toggle="tooltip" title="John 10:10">abundantly</a> today. </span>Here at Brighton, it brings purpose to our lives knowing that we are helping you pursue financial peace. How would today be different if you had a little less worry and a little more time to focus on what is most important to you?</span>
+
+				</div>
+				<div class="col-sm-4">
+					<span class="glyphicon glyphicon-road" aria-hidden="true" style="display: block; margin: 0px auto; text-align: center;color:#6FB353;font-size:75px;padding-top:30px;"></span>
+					<span class="title" style="font-size:22px;">WHERE WE'RE GOING</span>
+					<span style='display: block; margin: 0px auto; text-align:center;font-size:16px;color:#777;width:80%;'><span style="color:black">We are passionate about advancing financial peace in our community.</span> Through education, inspiration and partnership we aim to help people of all ages rise above our culture's misleading financial messages.<br>
+					<!-- <button class="btn btn-success" style="margin-top:10px;">Join Us</button> -->
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="shadow"> 
+		</div>
+		<div id="daveRamsey" class="row" style="height:auto;">		
+			<div class="col-sm-5 col-sm-push-7" style="">
+				<img src="css/images/smartvesterDave.png" style="height:400px;">
+			</div>
+			<div class="col-sm-7 col-sm-pull-5" style="text-align:center;margin-top:30px;margin-bottom:10px;">
+				<div id="daveRamseyTitle">
+					We are SmartVester pros.
+				</div>
+				<br>
+				<div id="daveRamseyMessage" class="answer" style="font-size:16px;">
+					We are proud that both of our founding partners are listed on Dave Ramsey's SmartVestor Pro directory.We have earned our position as SmartVestor Pros because of our experience in the industry and our drive to help others. We previously served as Dave Ramsey's Endorsed Local Provider for the Fresno area and have served hundreds of people just like you.
+					<br>
+					<b><span style="font-size: 14px;">Dave Ramsey, LPL Financial, and Brighton Investment Advisors are separate entities.</span></b>
+					<br>
+					<br>
+					<a href="daveRamsey.html" ><button class="btn btn-sm btn-green btn-space">Learn More!</button></a>
+				</div>
+			</div>
+			
+
+		</div>	
+		
+	
+
+		<div id="pic" class=" parallax-window" data-parallax="scroll" data-speed="0" data-position="top top" data-image-src="css/images/deskOverlayLower.jpg">
+			<div id="whatMakesUsDifferent" class="row " style="color:white;">
+	 		<div class="row" style="">
+					<span class="title" style="font-size:45px;">WHAT MAKES US DIFFERENT</span>
+					<div class="separator-container">
+						<div class="separator line-separator">∎</div>
+					</div>
+				</div>
+				<div class="textStyle">
+					Here at Brighton, we've worked very hard to tailor our service and client experience to a specific kind of client: the modern long-term investor; busy, discerning and grounded. With so many choices for financial advisors, knowing the differences between them can mean everything to getting the right fit.  
+From what type of <a onclick="$('#firmModal').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Click me">firm</a> 
+they work with,
+
+to <a onclick="$('#feeModal').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Click me">fee</a> structures,
+
+to <a onclick="$('#serviceModal').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Click me">service</a> models,
+to 
+<a onclick="$('#certificationModal').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Click me">
+certifications
+</a>
+and licenses,
+to investment 
+<a onclick="$('#philosophyModal').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Click me">
+philosophies, 
+</a>
+to types of 
+<a onclick="$('#investmentModal').modal('toggle');"style="color:#6FB353;text-decoration:underline;cursor:pointer;" data-placement="top" data-toggle="tooltip" title="Click me">
+investments 
+</a>
+they recommend,
+all of it matters greatly and we urge you to look deeply into the matter.  This may be the most important professional relationship you have.
+
+				</div>
+				</div>
+				
+				
+
+
+
+				<!-- <a href="aboutUs.html"><button style="margin-top:20%;"class="btn btn-sm btn-green">Our Services</button></a>  -->
+ 			
+		</div>
+		
+
+	<div class="row" style="background-color: white; padding-top: 20px; padding-bottom: 20px; width:95%;margin-left: 2.5%;">
+		<span class="title" style="padding-bottom: 20px;">Our Services</span>
+		<div class="col-sm-4">
+			<div class="row" style="padding-top:53px">
+				<div class="title" style="font-size:25px;padding-top:0px;padding-bottom:10px;">
+					Risk Management & Solutions
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Long Term Care</div>
+					<div class="panel-body collapse">
+						Ask anyone who has gone through this with a loved-one, paying for long-term care costs can ruin an otherwise sound financial plan.  We can show you several options to make sure all your work and planning does not go to waste, and help decide when the right age to get insurance might be.
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Disability Insurance</div>
+					<div class="panel-body collapse">
+						Losing income due to a medium or long term disability is much more common than most people think, and the coverage most have through work is not remotely adequate.  We can help bridge the gap to ensure your goals stay on track, no matter what life might throw at you.
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Life Insurance </div>
+					<div class="panel-body collapse">
+						Most people know that life insurance is important, but knowing how much coverage is right for you, and what kinds of policies are the best fit is where many get stuck.  Our expertise and unbiased advise can really help.
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-sm-4">
+			<div class="row">
+				<div class="title" style="font-size:25px;padding-top:0px;padding-bottom:10px;">
+					Individuals & Families
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Comprehensive Financial Planning</div>
+					<div class="panel-body collapse">
+						We’ll take a look at all aspects of your financial picture and develop a plan to pursue your goals.
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Retirement & Income Planning</div>
+					<div class="panel-body collapse">
+						When the time comes that you are financially ready to stop working or to pursue your other passions, we’ll help you plan the details of how exactly that’s going to work.
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Investment Portfolio </div>
+					<div class="panel-body collapse">
+						Whether you are investing in an IRA, ROTH, 529 or brokerage account, we’ll help you decide on appropriate investments to match your goals and personality.
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Education Planning</div>
+					<div class="panel-body collapse">
+						 Planning for future college expenses can seem daunting, and the options available are overwhelming. We'll make things simple and help you do the best you can.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4" style="padding-top:53px">
+			<div class="row">
+				<div class="title" style="font-size:25px;padding-top:0px; padding-bottom:10px">
+					Business Solutions
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Employer Sponsored Retirement Plan</div>
+					<div class="panel-body collapse">
+						We offer help with 401(k), 403(b), SEP IRA, SIMPLE IRA, profit sharing, Defined Benefits, and more. 
+					</div>
+				</div>
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Comprehensive Fiduciary Services</div>
+					<div class="panel-body collapse">
+						Address regulatory requirements and mitigate personal and corporate liability related to retirement plans.
+					</div>
+				</div>
+				<div class="panel panel-green">
+					<div class="panel-heading" onclick="$(this).siblings().toggleClass('collapse')">Executive Benefits</div>
+					<div class="panel-body collapse">
+						Strategies and Options to help Business Owners, their Executive Teams, and Highly Compensated Employees to prudently plan for retirement above and beyond what is capable with corporate retirement plans
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+		
+		
+	
+ 		<!-- endorsements -->
+		<div style="padding-top:25px;-webkit-filter: grayscale(1);filter: grayscale(1);">
+			<div class="" style="text-align:center;">	
+				<div class="col-sm-4">
+					<div class="col-xs-6 endorsement">
+						<a href="https://www.daveramsey.com/elp"><img src="css/images/elp_logo.jpg" style="height:auto;width:100px;"></a>
+					</div>
+					<div class="col-xs-6 endorsement">
+						<a href="https://www.chrishogan360.com/"><img src="css/images/chris.png" style="width:100px;" ></a>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="col-xs-6 endorsement">
+						<a href="https://www.smartdollar.com/"><img src="css/images/smartDollar.png" style="width:100px;" ></a>
+					</div>
+					<div class="col-xs-6 endorsement">
+						<a href="http://www.ahartbenefits.com/investment-advisors/"><img src="css/images/ahart.jpg" style="width: 50px;" ></a>
+
+					</div>
+				</div>
+				<div class="col-sm-4">
+						<div class="col-xs-6 endorsement">
+							<a href="http://www.clovischamber.com/about/board_of_directors"><img src="css/images/clovisChamber.jpg" style="width:100px;" ></a>
+						</div>
+						<div class="col-xs-6 endorsement">
+							<a href="http://daveramsey.com/"><img src="css/images/ramsey.png" style="width:100px;" ></a>
+						</div>
+					</div>
+			</div>
+			<div class="endorsementRow" style="text-align:center;">
+					<div class="col-sm-4">
+						<div class="col-xs-6 endorsement">
+							<a href="http://www.clovischamber.com/programs/young_entrepreneurs_academy"><img src="css/images/YEA.jpg" style="width:50px;" ></a>
+						</div>
+						<div class="col-xs-6 endorsement">
+							<a href="http://businessstreetonline.com/40-under-40-nick-maxwell-lpl-financial/"><img src="css/images/businessStreet.png" style="width:100px;" ></a>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="col-xs-6 endorsement">
+							<a href="http://clovisrotaryclub.com/Members.html" ><img src="css/images/rotory.jpg" style="width:50px;" ></a>
+						</div>
+						<div class="col-xs-6 endorsement">
+							<a href="http://www.kingsburgchamber.com/board-of-directors.html"><img src="css/images/kingsburgChamber.jpg" style="width:50px;" ></a>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="col-xs-6 endorsement">
+							<a href="https://lplfinancial.lpl.com/"><img src="css/images/lpl.png" style="width:100px;" ></a>
+						</div>
+						<div class="col-xs-6 endorsement">
+							<a href="http://www.daveramsey.com/fpu/"><img src="css/images/financialPeace.png" style="width:100px;" ></a>
+
+						</div>
+					</div>
+				
+			</div>
+
+			<!-- test -->
+
+				<!-- <div style="margin-left:5px;" class="col-sm-4 endorsement">
+					<a href="http://businessstreetonline.com/40-under-40-nick-maxwell-lpl-financial/"><img src="css/images/businessStreet.png"style="height:100px;" ></a>
+				</div> -->
+				
+			</div>
+		</div>
+
+		<div id="footer" class="row" >
+			<div class="col-sm-8">
+				<div id="footerDisclaimer">
+					The content is developed from sources believed to be providing accurate information. The information in this material is not intended as tax or legal advice. Please consult legal or tax professionals for specific information regarding your individual situation. The opinions expressed and material provided are for general information, and should not be considered a solicitation for the purchase or sale of any security.
+ 					<br>
+ 					<br>
+					The individuals of Brighton Investment Advisors are registered representatives with, and Securities and Advisory services offered through LPL Financial, a Registered Investment Advisor, Member <span style="color:white"><a href="http://finra.org" target="_blank">FINRA</a></span>/ <span style="color:white"><a href="http://sipc.org" target="_blank">SIPC</a></span>. The LPL Financial Registered Representatives associated with this site may only discuss and/or transact securities business with residents of the following states: CA, CO, GA, IA, ID, NC, OK, OR, TX, UT, & WA.
+					<br>
+					<br>
+					
+					<br>
+					<br>
+					
+				</div>
+			</div>
+			<div class="col-sm-2 footerText">
+				<div style="margin-top:50px;color:white;">
+					CONTACT
+					<br>
+					(559) 320 0285
+					<br>
+					info@brightonadvisors.com
+					
+					<br>
+					7050 N. Fresno Street
+					<br>
+					Suite 105
+					<br>
+					Fresno, Ca 93720
+
+				</div>
+				<!-- LITE<div id="socialDiv">
+					<span class="fa-stack fa-lg" style="margin-left:-4px;">
+						
+	  					<i class="fa fa-square-o fa-stack-2x"></i>
+	  					<i class="fa fa-twitter fa-stack-1x"></i>
+					</span>
+					<span class="fa-stack fa-lg" >
+						
+	  					<i class="fa fa-square-o fa-stack-2x"></i>
+	  					<i class="fa fa-facebook fa-stack-1x"></i>
+					</span>
+					<span class="fa-stack fa-lg" >
+						
+	  					<i class="fa fa-square-o fa-stack-2x"></i>
+	  					<i class="fa fa-linkedin fa-stack-1x"></i>
+					</span>
+				</div> -->
+			</div>
+			<div class="col-sm-2 footerText">
+				<div style="margin-top:50px;color:white;">
+					LINKS
+					<br>
+					<a href="daveRamsey.html" style="color:white;">Dave Ramsey</a>
+					<!-- LITE<br>
+					<a href="aboutUs.html" style="color:white;">About Us</a> -->
+					<br>
+					<a href="contactUs.html" style="color:white;">Contact Us</a>
+					<br>
+					<a href="index.html" style="color:white;">Home</a>
+
+				</div>
+			</div>
+		</div> 
+		<!-- <div id="socialDiv" class="row" style="color:white;">
+			<div class="col-sm-8">
+				
+				
+			</div>
+			<div class="col-sm-4">
+				
+			</div>
+			
+		</div>
+		
+	</div> -->
+</body>
+
+
+
+
+
+
+<div id="modal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Jeremiah 29:11</h4>
+      </div>
+      <div class="modal-body">
+        <p>For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="modal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">John 10:10</h4>
+      </div>
+      <div class="modal-body">
+        <p>The thief comes only to steal and kill and destroy; I have come that they may have life, and have it to the full.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="firmModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Our Firm</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        OUR INDEPENDENCE IS VERY IMPORTANT TO US AND OUR CLIENTS. A GOOD QUESTION TO ASK IS, "WHO ELSE DOES THIS ADVISOR SERVE?" DOES THE ADVISOR WORK FOR A WALL STREET INVESTMENT BANK, AN INSURANCE COMPANY, OR ARE THEY INDEPENDENT? BRIGHTON INVESTMENT ADVISORS IS AN INDEPENDENT FIRM WHICH MEANS WE ARE NOT BEHOLDEN TO ANYONE BUT OUR CLIENTS, AND ARE FREE TO RECOMMEND ONLY WHAT WE BELIEVE TO BE IN THEIR BEST INTEREST. 
+        <!-- our independence is very important to us and our clients. a good question to ask is, 'who else does this advisor serve?" does the advisor work for a wall street investment bank, an insurance company, or are they independent? advisors who work for investment banks like merrill lynch (bank of america owned), wells fargo, chase or morgan stanley can have great resources but with sales managers, quotas and bonuses, can their advice truly be considered unbiased? what about insurance companies like new york life and prinipal financial; advisors for these firms are primarily insurance agents who may also work with investments.  sure they deal with financial matters but are they investment experts? further, they are often compensated more for selling their company's products over another. many times, these agents do not have full investment licenses and so cannot offer certain investments that may be appropriate for you. again, can their advice truly be considered unbiased? brighton investment advisors is an independent advisory firm which means we are not beholden to anyone but our clients, and are free to recommend only what we believe to be in their best interest. we choose lpl financial to be our broker/dealer because they are the largest firm in the country servicing independent advisors like us. so we have the strength and resources we need, with the unbiased approach you want. this makes a big difference. --></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="feeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Our Fees</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you a long-term investor or a short-term trader? Do you think you should choose high quality investments and hang on to them, or do you like to switch things around often? Well each of these investment styles has a fee-structure that best goes along with it. The problem is that some advisors only recommend one kind of fee structure whether it is the better fit for you or not. At Brighton Investment Advisors we are free to offer whatever fee structure best suits our client's needs and that may lead to significant savings over the long-term to our clients. This makes a big difference.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="serviceModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Our Service Model</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        every advisor claims to give great service and most of them do a good job, especially for their biggest clients. it's no secret that advisors group their clients into tiers and deliver pre-set and specific service models for each. it is also well known that many established advisors have investment minimums; i.e. you must have $250,000 to invest with them. this can leave many people feeling unimportant and that their investments are not being looked after. not so at brighton investment advisors. we are happy to work with anyone who thinks we are the right fit; from the single mom looking to start her first roth ira to the very experienced multi-million dollar portfolio owners. this makes a big difference.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="certificationModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Our Certifications</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        	the kinds of licenses & registrations that an advisor has tells a lot about what he or she is able to do for you. we are fully registered through LPL financial; series 7 and 66 and we keep up those registrations with continuing education. many advisors are not registered to recommend all available securities and are not trained in certain strategies. we are Also fully licensed to handle your insurance needs including life insurance, long-term care, health and disability. this makes a big difference.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="philosophyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Our Philosophy</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        	Advisors should be able to clearly and simply explain their investment philosophy in no uncertain terms. Unfortunately, many advisors will have vague and open-ended answers for this as they try to be all things to all people; winning your business is their primary goal after all. At Brighton Investment Advisors our goal is not to simply win you over by saying what we think you want to hear; we prefer to tell you exactly what we do and how we do it, telling the unvarnished truth and letting the chips fall where they may. This makes a big difference. Our philosophy;  
+        	<br>
+        	-We believe in keeping things simple by investing in high quality investments with great managers and long-term track records.  
+        	<br>
+        	-We believe that holding on to those investments through the inevitable temporary declines is the only consistent way to capture the permanent advance in the markets.  
+        	<br>
+        	-We believe that dividend-focused investments are the cornerstone to an investment portfolio designed to pursue your long-term goals.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="investmentModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Our Investments</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        it's no secret that we believe in keeping things simple. when an advisor starts using complicated investments that are hard to understand, or using strategies designed for capturing short-term future movements in the markets, we think you should carefully consider if that advisor is right for you. we believe in stewardship and we are confident that the best way to help you pursue your goals is by using tried and true investments from long standing firms as the foundation of your portfolio. this makes a big difference.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+</html>

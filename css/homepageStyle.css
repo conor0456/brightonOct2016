@@ -1,0 +1,629 @@
+/*
+Green: #6FB353;
+Offwhite: #F9F9FA;
+
+*/
+/**{ border: 1px solid red; }*/
+
+/*cstlib*/
+html,body
+{
+    /*width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;*/
+    overflow-x: hidden;
+    
+}
+.answer
+{
+    color:black;
+    font-size: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+}
+
+.bio-left
+{
+    padding-top:70px;
+    text-align: left;
+    color: #424242;
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    letter-spacing:0.1em;
+    text-transform: lowercase;
+    font-size: 14pt;
+    font-variant: small-caps;
+    
+
+
+
+}
+.bioText
+{
+    margin-right: 35%;
+    width: 65%;
+}
+.bio-right
+{
+    padding-top:70px;
+    text-align: right;
+    color: #424242;
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    letter-spacing:0.1em;
+    text-transform: lowercase;
+    font-size: 14pt;
+    font-variant: small-caps;
+
+}
+
+#bioDiv
+{
+    background-color: #F9F9FA;
+    padding-bottom: 40px;
+    min-height:300px;
+    height:auto;
+    width: 100%;
+    color:black;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.bioPhoto
+{
+    text-align: right;
+}
+.bioText
+{
+    width:90%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+body
+{
+    padding:0px;
+    margin: 0px;
+    background-color: white;
+}
+.box
+{
+    margin-top:50px;
+    height:300px;
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    /*background-color: #434343;*/
+    background-color:white;
+    /*border-radius: 25px;*/
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.btn-green
+{
+    background-color: #6FB353;
+    color:white;
+}
+
+.container-fluid
+{
+    padding:0px;
+   /*background-color: black;*/
+    /*overflow-y: hidden;*/
+    
+   
+    margin: 0px;
+    
+}
+#daveRamsey
+{
+    min-height: 400px;
+    height:auto;
+    overflow: hidden;  
+    background-color: white; 
+    padding-top: 20px;
+}
+#daveRamseyTitle
+{
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: -.9px;
+    line-height: 50px;
+    
+    color:black;
+    width: 80%;
+    padding-left: 20%;
+    text-align: left;
+}
+#daveRamseyMessage
+{
+    text-align:left;
+    width:80%;
+    padding-left:20%;
+    padding-right:0%;
+    font-size:17px;
+}
+#daveRamseyTitle br{
+        display: inline;
+    }
+.endorsement
+{
+    margin-top: 10px;
+    height:60px;
+}
+.endorsementRow
+{
+    padding-bottom: 50px;
+}
+#faq
+{
+    min-height:400px;
+    height:auto;
+    padding-bottom: 30px;
+}
+#firstEndorsement
+{
+    padding-top:50px;
+}
+#footer
+{
+    background-color: #112740;
+    min-height:220px;
+    height:auto;
+}
+#footerDisclaimer
+{
+    font-size:13px;
+    color:white;
+    padding-top:50px;
+    /*font-family:'Open Sans', sans-serif;*/
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    font-weight:100;
+    width: 90%;
+    margin-left: 5%;
+    /*letter-spacing: 1px;*/
+    /*-webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;*/
+}
+#header
+{
+    margin-top: 0px;
+    height:100vh;
+    width:auto;
+    color: white;
+    text-align: center;
+}
+
+.headerText
+{
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    padding-left: 10%;
+    width:auto;
+    padding-right: 10%;
+    text-align: center;
+
+    
+    line-height: 50px;
+    
+
+
+    font-weight:500;
+    font-size:50px;
+    
+}
+
+#infoDiv
+{
+    /*min-height: 50vh;*/
+    min-height:500px;
+    height:auto;
+    background-color: white;
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    display: table;
+}
+
+p 
+{
+    color: #424242;
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    letter-spacing:0.1em;
+    text-align:left;
+    text-transform: lowercase;
+    font-size: 14pt;
+    font-variant: small-caps;
+}
+
+.panel
+{
+    margin-bottom: 10px;
+    cursor:default;
+}
+
+.panel-hover
+{
+    background-color: #97c883;
+    color:white;
+}
+
+.panel-body
+{
+    background-color: white;
+    color:black;
+}
+
+.panel-green
+{
+    background-color: #6FB353;
+    color:white;
+    width:90%;
+    margin-left: 5%;
+    cursor:pointer;
+}
+#phoneNumber
+{
+    visibility: visible;
+    display: block;
+}
+#pic
+{
+   margin-top: 0px;
+    height:90vh;
+    width:auto;
+    color: white;
+    text-align: center;
+}
+.question
+{
+    color:#6FB353;
+    font-size: 30px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 30px;
+    font-family: 'Adobe Caslon Pro', 'Hoefler Text', Georgia, Garamond;
+}
+
+q 
+{
+  quotes: "“" "”" "‘" "’";
+}
+
+q:before 
+{
+    content: open-quote;
+    font-size: 20px;
+    font-weight: bold;
+    color:#6FB353;
+}
+
+q:after 
+{
+    content: close-quote;
+    font-size: 20px;
+    font-weight: bold;
+    color:#6FB353;
+}
+.row
+{
+    
+}
+.shadow
+{
+    margin-top:-50px;
+    height:150px;
+    width: 100%;
+    opacity:.03;
+    background-image:linear-gradient(to bottom, transparent 80%, #000000 100%);
+}
+#socialDiv
+{
+    margin-top:10px;
+    color:white;
+    text-align:left;
+}
+.subText
+{
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+    padding-left: 20%;
+    width:auto;
+    padding-right: 20%;
+    text-align: center;
+    font-size: 20px;
+    padding-top:45px;
+    letter-spacing: -.9px;
+    font-weight: 50;
+    color: white;
+    
+}
+
+.textStyle
+{
+    padding-left:10%;
+    padding-right:10%;
+    font-size:23px; 
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+}
+
+.title
+{
+    padding-top:25px;
+    font-size:35px;
+    display: block; 
+    margin: 0px auto; 
+    text-align: center;
+    font-family: "DIN Web", "Hiragino Sans GB", STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, sans-serif;font-weight:100;
+}
+
+#whatMakesUsDifferent
+{
+    min-height: 300px;
+    height:auto;
+    /*background-color: #F9F9FA;*/
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+
+.mobileShow
+    {
+        display: none;
+visibility: hidden;
+    }
+    .mobileHide
+    {
+        /*display: inline;*/
+    }
+
+
+
+/*========================Mobile Response========================*/
+
+
+
+
+@media only screen and (max-width: 768px) {
+    #daveRamseyMessage
+    {
+        width: 90%;
+        padding-left: 5%;
+    }
+    #daveRamseyTitle
+    {
+        width: 90%;
+        padding-left: 5%;
+    }
+    .mobileShow
+    {
+        display:inline;
+        visibility: visible;
+    }
+    .mobileHide
+    {
+        display: none;
+        visibility: hidden;
+    }
+    .bioPhoto
+    {
+        float:center;
+        text-align: center;
+    }
+    .bio
+    {
+        text-align: center !important;
+        padding-top: 20px !important;
+        width: 90%;
+        margin-left: 5%;
+    }
+    .bio-left
+    {
+       padding-top: 30px;
+    }
+    .bioText
+    {
+        text-align: center;
+        margin:0px;
+        margin-left: 5%;
+    }
+    #bioDiv
+    {
+        padding-bottom: 20px;
+    }
+    #whatMakesUsDifferent
+    {
+        padding-bottom: 30px;
+        padding-top:950px;
+    }
+    .subText
+    {
+        visibility: hidden;
+    }
+    .endorsement
+    {
+        margin-top: 20px;
+    }
+    .btn-space
+    {
+        margin-bottom: 20px;
+    }
+    #daveRamsey
+    {
+        padding-top: 20px;
+    }
+    .footerText
+    {
+        text-align: center !important;
+    }
+    #pic
+    {
+        height:500px;
+    }
+    .textStyle
+    {
+        font-size:20px;
+    }
+    #socialDiv
+    {
+        text-align: center;
+    }
+    .footerText
+    {
+        margin-bottom:10px;
+    }
+    .daveTextRow
+    {
+        padding-bottom: 20px;
+    }
+    #ourHistory
+    {
+        padding-bottom: 20px;
+    }
+    #phoneNumber
+    {
+        visibility: hidden;
+        display: none;
+    }
+    #daveRamseyMessage
+    {
+        text-align: center;
+
+    }
+    #daveRamseyTitle br{
+        display: none;
+    }
+    #daveRamseyTitle
+    {
+        text-align: center;
+    }
+}
+
+/** 
+ * iPad with portrait orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+    #header
+    {
+        height:950px;
+    }  
+}
+
+/** 
+ * iPad with landscape orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+    #header
+    {
+        height:700px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.separator-container {
+  text-align: center;
+  position: relative;
+}
+.separator-container .separator {
+  color: #6FB353;
+  margin: 0 auto 1em;
+  width: 11em;
+}
+.separator-container .separator.line-separator:before, .separator-container .separator.line-separator:after {
+  display: block;
+  width: 40%;
+  content: " ";
+  margin-top: 14px;
+  border: 1px solid #6FB353;
+}
+.separator-container .separator.line-separator:before {
+  float: left;
+}
+.separator-container .separator.line-separator:after {
+  float: right;
+}
+
+
+
+
+#navMain
+{
+    margin-bottom: 0px;
+}
+#navMain.navbar-default .navbar-brand {
+    color: white;
+}
+#navMain.navbar-default {
+    font-size: 14px;
+    background-color: white;
+    border-bottom-width: 0px;
+}
+#navMain.navbar-default .navbar-nav>li>a {
+    color: black;
+    background-color: white; /* rgb(20, 72, 115);*/
+}
+#navMain.navbar-default .navbar-nav>li>a:hover,
+#navMain.navbar-default .navbar-nav>li>a:focus {
+   
+    color: white;
+    background-color: #6FB353;
+}
+#navMain.navbar-default .navbar-nav>.active>a,
+#navMain.navbar-default .navbar-nav>.active>a:hover,
+#navMain.navbar-default .navbar-nav>.active>a:focus {
+    color: white;
+    background-color: #6FB353;
+}
+#navMain.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+}
+#navMain.navbar-default .navbar-toggle:hover,
+#navMain.navbar-default .navbar-toggle:focus {
+    background-color: white;
+}
+#navMain.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+#navMain.navbar-default .navbar-toggle:hover .icon-bar,
+#navMain.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #6FB353;
+}
+
+
+
+
+
