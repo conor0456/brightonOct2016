@@ -76,7 +76,17 @@ $(document).ready
 
 );
 
-
+function postData(x)
+{
+	if(x=="email")
+	{
+		$.post( "enterEmail.php", { email: $("#bioEmail").val()}, function(){alert("it worked");});
+	}
+	if(x=="emailName")
+	{
+		$.post( "enterEmail.php", { email: $("#modalEmail").val(), name: $("#modalName").val()} );
+	}
+}
 
 jQuery(function($){
 
@@ -195,7 +205,7 @@ function playPause()
     		
     	</span>
     	<img src="css/images/whiteLogo.png" height="30px" style="margin-left: 17%;">
-    	<button class="btn" style="background-color: rgb(33, 206, 153); color:white; margin-left: 3%;">Contact Us</button>
+    	<button class="btn" style="background-color: rgb(33, 206, 153); color:white; margin-left: 3%;" onclick="$('#contactUsModal').modal('toggle')">Contact Us</button>
     </div>
   </div>
 </div>
@@ -213,7 +223,7 @@ function playPause()
 				</div>
 				<div class="col-sm-4 bio-left">
 					<div class="bioText" style="margin-left:20px;">
-						<div style="font-size: 30px; margin-top:40px;">Nicholas W. Maxwell</div><br><div style="font-size:22px;margin-top:-20px;">Founding Partner</div>
+						<div style="font-size: 20px; margin-top:40px;">Nicholas W. Maxwell</div><br><div style="font-size:15px;margin-top:-20px;">Founding Partner</div>
 						<a href="mailto:Nick.Maxwell@BrightonAdvisors.com" style="font-size:15px;margin-top:0px;">Nick.Maxwell@BrightonAdvisors.com</a>
 					</div>
 				</div> 
@@ -222,10 +232,24 @@ function playPause()
 				</div>
 				<div class="col-sm-4 bio-left">
 					<div class="bioText" style="margin-left:20px;">
-						<div style="font-size: 30px; margin-top:40px;">Arlie A. Rogers Jr.</div><br><div style="font-size:22px;margin-top:-20px;">Founding Partner</div>
+						<div style="font-size: 20px; margin-top:40px;">Arlie A. Rogers Jr.</div><br><div style="font-size:15px;margin-top:-20px;">Founding Partner</div>
 						<a href="mailto:Arlie.Rogers@BrightonAdvisors.com" style="font-size:15px;margin-top:0px;">Arlie.Rogers@BrightonAdvisors.com</a>
 					</div>
 				</div> 
+			</div>
+			<div class="row" style="height:auto;padding-top:40px;margin-left: 0px;text-align: center;">
+			
+					
+				
+				<span style="font-size:18px;">Simply enter your e-mail or phone number below to have Nick or Arlie personally follow-up with you.</span>
+				<div class="col-md-offset-4 col-md-4" style="padding-top:20px;">
+					<div class="input-group" style="width:400px;">
+						<input type="text" class="form-control" placeholder="Email" id="bioEmail" >
+						<div class="input-group-btn">
+						<button class="btn " type="button" style="background-color: rgb(33, 206, 153); color:white;" onclick="postData('email')">Contact</button>
+						</div>
+					</div><!-- /input-group -->
+				</div>
 			</div>
 		</div>
 
@@ -779,6 +803,36 @@ all of it matters greatly and we urge you to look deeply into the matter.  This 
   </div>
 </div>
 
+<div id="contactUsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Contact Us</h4>
+      </div>
+      <div class="modal-body">
+        <form action="contactUs.php">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" id="modalName">
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" class="form-control" id="modalEmail">
+			</div>
+			<input class="btn btn-success" type="submit" value="Submit" data-dismiss="modal">
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" >Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
