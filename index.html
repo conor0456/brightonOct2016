@@ -78,11 +78,11 @@ $(document).ready
 
 function postData(x)
 {
-	if(x=="email")
+	if(x=="bioEmail")
 	{
 		$.post( "enterEmail.php", { email: $("#bioEmail").val()}, function(){alert("it worked");});
 	}
-	if(x=="emailName")
+	if(x=="modalEmail")
 	{
 		$.post( "enterEmail.php", { email: $("#modalEmail").val(), name: $("#modalName").val()} );
 	}
@@ -246,7 +246,7 @@ function playPause()
 					<div class="input-group" style="width:400px;">
 						<input type="text" class="form-control" placeholder="Email" id="bioEmail" >
 						<div class="input-group-btn">
-						<button class="btn " type="button" style="background-color: rgb(33, 206, 153); color:white;" onclick="postData('email')">Contact</button>
+						<button class="btn " type="button" style="background-color: rgb(33, 206, 153); color:white;" onclick="postData('bioEmail')">Contact</button>
 						</div>
 					</div><!-- /input-group -->
 				</div>
@@ -822,12 +822,12 @@ all of it matters greatly and we urge you to look deeply into the matter.  This 
 				<label for="email">Email:</label>
 				<input type="email" class="form-control" id="modalEmail">
 			</div>
-			<input class="btn btn-success" type="submit" value="Submit" data-dismiss="modal">
+			<button class="btn btn-success"  onclick="postData('modalEmail');" data-dismiss="modal">Submit</button>
         </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" >Close</button>
+      
       </div>
     </div>
 
