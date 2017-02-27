@@ -80,16 +80,20 @@ function postData(x)
 	if(x=="bioEmail")
 	{
 		$.post( "enterEmail.php", { email: $("#bioEmail").val()});
+		$("#bioEmail").val("Thanks!");
+		$("#bioEmail").attr('readonly',true);
 	}
 	if(x=="modalEmail")
 	{
 		$.post( "enterEmail.php", { email: $("#modalEmail").val(), name: $("#modalName").val()} );
-
+		$("#modalName").val("Thanks!");
+		$("#modalName").attr('readonly',true);
+		$("#modalEmail").val("Thanks!");
+		$("#modalEmail").attr('readonly',true);
 	}
 	alert("Thank you. You will hear from us shortly.");
-	$("#bioEmail").val("");
-	$("#modalName").val("");
-	$("#modalEmail").val("");
+
+	
 }
 
 jQuery(function($){
