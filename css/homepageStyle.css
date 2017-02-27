@@ -6,6 +6,11 @@ Offwhite: #F9F9FA;
 /**{ border: 1px solid red; }*/
 
 /*cstlib*/
+.seaGreenButton
+{
+    background-color: rgb(33, 206, 153); 
+    color:white;
+}
 html,body
 {
     /*width: 100%;
