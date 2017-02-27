@@ -84,7 +84,12 @@ function postData(x)
 	if(x=="modalEmail")
 	{
 		$.post( "enterEmail.php", { email: $("#modalEmail").val(), name: $("#modalName").val()} );
+
 	}
+	alert("Thank you. You will hear from us shortly.");
+	$("#bioEmail").val("");
+	$("#modalName").val("");
+	$("#modalEmail").val("");
 }
 
 jQuery(function($){
