@@ -77,21 +77,22 @@ $(document).ready
 
 function postData(x)
 {
-	if(x=="bioEmail")
+	if(x=="bioEmail" && $("#bioEmail").val()!='')
 	{
 		$.post( "enterEmail.php", { email: $("#bioEmail").val()});
 		$("#bioEmail").val("Thanks!");
 		$("#bioEmail").attr('readonly',true);
 	}
-	if(x=="modalEmail")
+	if(x=="modalEmail" && $("#modalEmail").val()!='')
 	{
 		$.post( "enterEmail.php", { email: $("#modalEmail").val(), name: $("#modalName").val()} );
 		$("#modalName").val("Thanks!");
 		$("#modalName").attr('readonly',true);
 		$("#modalEmail").val("Thanks!");
 		$("#modalEmail").attr('readonly',true);
+		alert("Thank you. You will hear from us shortly.");
 	}
-	alert("Thank you. You will hear from us shortly.");
+	
 
 	
 }
