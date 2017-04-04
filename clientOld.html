@@ -1,0 +1,1227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Intentionet</title>	
+ 	<link rel="stylesheet" href="styles/jquery-ui.css">
+    <link rel="stylesheet" href="styles/graph.css">
+    <link rel="stylesheet" href="styles/jquery.qtip.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<style>
+
+		
+	</style>
+		
+	<script src="libs/jquery.js"></script>
+	<script src="libs/jquery-ui.js"></script>
+	<script src="libs/jszip.js"></script>
+	<script src="libs/jszip-utils.js"></script>
+	<script src="libs/cytoscape.js"></script>
+    <script src="libs/cytoscape-qtip.js"></script>
+	<script src="libs/jquery.qtip.js"></script>
+	<!-- <script src="libs/spin.js"></script> -->
+	<!-- <script src="libs/jquery.spin.js"></script> -->
+	<!-- <script src="libs/jquery.dialogextend.js"></script> -->
+	
+    <!-- <script src="scripts/utils.js"></script> -->
+    <!-- <script src="scripts/bfconsts.js"></script>
+    <script src="scripts/coordconsts.js"></script>
+    <script src="scripts/batfish-common.js"></script>
+    <script src="scripts/workclient.js"></script>
+    <script src="scripts/trybatfish.js"></script> -->
+
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<!-- #5F92C3; -->
+
+
+
+</head>
+
+<style>
+#questions
+{
+	padding-top:20px;
+}
+#menu
+{
+	padding-top: 10px;
+}
+.blue
+{
+	background-color: #5F92C3 !important;
+	color: white !important;
+}
+.blueText
+{
+	color:#5F92C3 !important;
+}
+
+
+.sectionTitle
+{
+	padding-bottom: 20px;
+}
+#testRigList
+{
+	
+
+}
+
+.rigOptionVisible
+{
+	display: block;
+}
+.rigOptionHidden
+{
+	display: none;
+}
+.analysisOptionVisible
+{
+	display: block;
+}
+.analysisOptionHidden
+{
+	display: none;
+}
+
+ 
+.testRigEntry
+{
+	padding-top: 20px;
+
+}
+.verticalBorderRight
+{
+	border-right: 1px solid black;
+}
+.fullLength
+{
+	min-height: 100vh;
+}
+.optionSubTitle
+{
+	font-size: 20px;
+}
+#optionsOverwrite #rigOptionList
+{
+	height:auto;
+}
+.disabled
+{
+	cursor: default !important;
+}
+.btn.active
+{
+	background-color: #5F92C3 !important;
+	color: white !important;
+}
+.btn-outline 
+{
+    background-color: transparent !important;
+    color:#5F92C3 !important;
+    transition: all .5s;
+    border: #5F92C3 solid thin !important;
+}
+.btn.btn-outline
+{
+    color: #fff;
+}
+</style>
+
+<body>
+<div class="container-fluid" style="padding-top: 0px;">
+	<div class="row" >
+	 
+	            <div class="tab-pane active" id="configuration">
+	            	<div class="col-sm-4 verticalBorderRight fullLength">
+	            		<div class="sectionTitle">
+	            			<h2>Containers</h2>
+	            		</div>
+	            		<div class="panel list-group">
+	            			<div id="containerList">
+	            			
+	            	
+							</div>
+							<a href="#" class="list-group-item blue" data-toggle="collapse" data-parent="containerList" onclick="showOptionPanel(-1,-1,'create');"><span class="glyphicon glyphicon-plus"></span> New Container</a>
+						</div>
+					</div>
+	            	
+	            	
+	            	<div class="col-sm-4 verticalBorderRight fullLength">
+	            		<div class="sectionTitle">
+	            			<h2>Options</h2>
+	            		</div>
+	            		<div id="rigOptionList">
+	            			<div id="optionsOverwrite">
+							</div>
+	            			<div id="createRigOption" class="rigOptionEntry rigOptionHidden">
+								<h3>Create Test Rig</h3>
+								<form class="form">
+									<label for="radioGeneratedName">Name</label>
+									<div class="form-group">		
+										<div class="input-group">
+											<div class="input-group-addon">
+												<input type="radio" name="radioName" id="radioGeneratedName" value="option1" checked>
+											</div>
+											<input type="text" class="form-control " id="valueGeneratedName" readonly value="generatedName">
+											
+										</div>
+									</div>
+									<div class="form-group">	
+										<div class="input-group">
+											<div class="input-group-addon">
+												<input type="radio" name="radioName" id="radioCustomName" value="option2" >
+											</div>
+											<input type="text" class="form-control" id="valueCustomName" onclick="$('#radioCustomName').prop('checked',true);" placeholder="Custom Name">
+										</div>
+									</div>
+									<label for="container">Container</label>
+									<div class="form-group">
+										<input type="text" class="form-control " id="testRigContainer" readonly value="">			
+									</div>
+									
+								 	<label for="container">Source</label>
+									<div class="form-group">
+										<div class="input-group">
+                							<label class="input-group-btn">
+							                    <span class="btn blue">
+							                        Browse<input type="file" style="display: none;" multiple>
+							                    </span>
+                							</label>
+                							<input type="text" class="form-control" readonly>
+            							</div>
+            						</div>
+            						<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-addon">Sample</div>
+											<select class="form-control" id="sampleSelect">
+									     		<option selected>Example.zip</option>
+											    <option value="1">Cisco.zip</option>
+											    <option value="2">Other.zip</option>
+									    	</select>
+										</div>
+									</div>
+									<a class="btn btn-success btn-md" onclick="createRig()">
+										Create Test Rig
+									</a>
+								</form>
+
+
+	            			</div>
+	            			<div id="createContainerOption" class="rigOptionEntry rigOptionHidden">
+	            				<h3>Create Container</h3>
+	            				<form class="form">
+									<label for="containerCustomName">Name</label>
+									<div class="form-group">			
+										<input type="text" class="form-control" id="valueContainerName" >
+									</div>
+									<div class="form-group">
+  										<label for="valueContainerDescription">Description</label>
+  										<textarea class="form-control" rows="5" id="valueContainerDescription"></textarea>
+									</div>
+									<a class="btn btn-success btn-md" onclick="createContainer()">
+										Create Container
+									</a>
+								</form>
+	            			</div>
+	            		</div>
+	            	</div>
+
+	            	<div class="col-sm-4 fullLength">
+	            		<div class="sectionTitle">
+	            			<h2>Analysis</h2>
+	            		</div>
+	            		<div id="analysisList">
+	            			<div id="analysisOverwrite">
+<!-- <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" href="#c0r0a0paramater">
+      <h4 class="panel-title">
+        <a>Paramaters</a>
+      </h4>
+    </div>
+    <div id="c0r0a0paramater" class="panel-collapse collapse">
+      <div id="c0r0a0paramaterBody" class="panel-body">
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-success">
+    <div class="panel-heading" data-toggle="collapse" href="#c0r0a0results">
+      <h4 class="panel-title">
+        <a>Results</a>
+      </h4>
+    </div>
+    <div id="c0r0a0results" class="panel-collapse collapse">
+      <div id="c0r0a0resultsBody" class="panel-body">
+      	{
+				name: 'AclReachability',
+				description: 'Identifies unreachable lines in ACLs.',
+				paramaters: 
+				[
+					{
+						name: 'aclNameRegex',
+						description: 'Regular expression for names of the ACLs to analyze.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			}
+      </div>
+    </div>
+  </div>
+</div> -->
+	            			</div>
+	            			<div id="createAnalysisOption" class="analysisEntry analysisOptionHidden">
+								
+								<form class="form">
+									<div class="form-group">
+										<label for="regex">Name</label>
+										<input id="analysisName" type="text" class="form-control" placeholder="Analysis name">
+									</div>
+									<div class="form-group">
+										<label for="analysisType">Select question type</label>
+										<select class="form-control" id="analysisType" onchange="if (this.selectedIndex) writeParamaterDiv(this.selectedIndex-1);">
+										<option>Choose One</option>
+										</select>
+									</div>
+									<div id="analysisParamaterWriteOver">
+										
+											
+									</div>
+									
+									<a class="btn btn-success btn-md" onclick="createAnalysis()">
+										Run Question
+									</a>
+								</form>
+
+
+	            			</div>
+	            		</div>
+<!-- 	            		<div id="c0r1Options">
+	            			<div class="panel list-group">
+	            				
+	            			
+		            			<a href="#" id="c0r1Node" class="list-group-item blue" data-toggle="collapse" data-target="#c0r1NodeSub" data-parent="#c0r1Options">Nodes</a>
+		            			<div id="c0r1NodeSub" class="sublinks collapse" onclick="showQuestionPanel(0,0,'view');">
+		            				
+		            			</div>
+		            			
+
+		            			<a href="#" id="c0r1Analyses" class="list-group-item blue" data-toggle="collapse" data-target="#c0r1AnalysesSub" data-parent="#c0r1Options">Analyses</a>
+		            			<div id="c0r1AnalysesSub" class="sublinks collapse">
+		            				<div id="c0r1AnalysesSubWriteOver">
+		            					<a id="c0r1Analysis0" class="list-group-item small blueText" onclick="showQuestionPanel(1,0,'viewAnalysis');">
+		            						Analysis_1
+		            					</a>
+		            					<a id="c0r1Analysis1" class="list-group-item small blueText" onclick="showQuestionPanel(1,1,'viewAnalysis')">
+		            						Analysis_2
+		            					</a>
+		            				</div>
+		            				<a id="c0r1NewAnalysis" class="list-group-item small blueText" onclick="showQuestionPanel(1,-1,'create')">
+		            					<span class="glyphicon glyphicon-plus">	
+		            					</span> New Analysis 
+		            				</a>
+		            			</div>
+
+		            			<a href="#" id="c0r1Environment" class="list-group-item blue" data-toggle="collapse" data-target="#c0r1EnvironmentSub" data-parent="#c0r1Options" >Environment</a>
+		            			<div id="c0r1EnvironmentSub" class="sublinks collapse">
+		            				<div id="c0r1EnvironmentSubWriteOver">
+		            					<a id="c0r1Environment0" class="list-group-item small blueText" onclick="showQuestionPanel(2,0,'viewEnvironment')"> 
+		            						EV_1
+		            					</a>
+		            					
+		            				</div>
+		            				<a id="c0r1NewEnvironment" class="list-group-item small blueText" onclick="showQuestionPanel(1,-1,'create')">
+		            					<span class="glyphicon glyphicon-plus">	
+		            					</span> New Environment
+		            				</a>
+		            			</div>
+
+
+	            			</div>
+
+
+	            		</div>
+ -->
+
+
+
+
+
+
+
+	            	</div>
+	            </div>
+	            
+	            
+	           
+	     
+	  
+	
+
+      
+	</div>
+</div>
+		
+
+
+
+
+
+
+
+
+
+	<script>
+		
+		var debug=true;
+		var CURRENTCONTAINER="";
+		var CURRENTCONTAINERINDEX="";
+		var CURRENTTESTRIG="";
+		var CURRENTTESTRIGINDEX="";
+		var CURRENTANALYSIS="";
+		var CURRENTANALYSISINDEX="";
+		var containers=[
+			// {name:"CISCO_CONTAINER", rigs:["TR_1","TR_2"], description:"A container for cisco test cases"},
+			// {name:"NETGEAR_CONTAINER", rigs:["TR_3","TR_8"], description:"A container used for testing netgear"},
+			// {name:"TEST_CONTAINER", rigs:["TR_4","TR_5","TR_6"], description:"A generic container for orphaned tests"}
+
+		];
+		var questions=[
+			{
+				name: 'AclReachability',
+				description: 'Identifies unreachable lines in ACLs.',
+				paramaters: 
+				[
+					{
+						name: 'aclNameRegex',
+						description: 'Regular expression for names of the ACLs to analyze.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'Assert',
+				description: 'Checks assertions.',
+				paramaters: 
+				[
+					{
+						name: 'assertions',
+						description: 'List of assertions',
+						default: '',
+						format: 'textarea'
+					}
+
+				]
+			},
+			{
+				name: 'BgpAdvertisements',
+				description: 'Lists BGP adverstisements in the network.',
+				paramaters: 
+				[
+					{
+						name: 'ebgp',
+						description: '(True|False) which indicates if eBGP advertisements should be included.',
+						default: 't',
+						format: 'tf'
+					},
+					{
+						name: 'ibgp',
+						description: '(True|False) which indicates if iBGP advertisements should be included.',
+						default: 't',
+						format: 'tf'
+					},
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'prefixRange',
+						description: 'Details coming.',
+						default: '*',
+						format: 'input'
+					},
+					{
+						name: 'received',
+						description: ' (True|False) which indicates if received advertisements should be included. ',
+						default: 't',
+						format: 'tf'
+					},
+					{
+						name: 'sent',
+						description: '(True|False) which indicates if sent advertisements should be included.',
+						default: 't',
+						format: 'tf'
+					}
+				]
+			},
+			{
+				name: 'BgpSessionCheck',
+				description: 'Checks if BGP sessions are correctly configured.',
+				paramaters: 
+				[
+					{
+						name: 'foreignBgpGroups',
+						description: 'Details coming.',
+						default: '',
+						format: 'input'
+					},
+					{
+						name: 'node1Regex',
+						description: 'Regular expression to match the nodes names for one end of the sessions.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'node2Regex',
+						description: 'Regular expression to match the nodes names for the other end of the sessions.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'CompareSameName',
+				description: 'Compares named structures with identical names across multiple nodes.',
+				paramaters: 
+				[
+					{
+						name: 'namedStructType',
+						description: 'Set of structure types to analyze drawn from ( AsPathAccessList, CommunityList, IkeGateway, IkePolicies, IkeProposal, IpAccessList, IpsecPolicy, IpsecProposal, IpsecVpn, RouteFilterList, RoutingPolicy)',
+						default: '[]',
+						format: 'input'
+					},
+					{
+						name: 'nodeRegex',
+						description: 'lar expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'singletons',
+						description: 'Specifies whether or not to include named structures for which there is only one equivalence class.',
+						default: 'f',
+						format: 'tf'
+					}
+
+				]
+			},
+			{
+				name: 'IpsecVpnCheck',
+				description: 'Checks if IPSec VPNs are correctly configured.',
+				paramaters: 
+				[
+					{
+						name: 'node1Regex',
+						description: 'Regular expression to match the nodes names for one end of the sessions.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'node2Regex',
+						description: 'Regular expression to match the nodes names for the other end of the sessions.',
+						default: '.*',
+						format: 'input'
+					}
+
+				]
+			},
+			{
+				name: 'IsisLoopbacks',
+				description: 'Lists which loopbacks interfaces are being announced into ISIS.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+
+				]
+			},
+			{
+				name: 'Neighbors',
+				description: 'Lists neighbor relationships in the testrig.',
+				paramaters: 
+				[
+					{
+						name: 'neighborType',
+						description: 'The type(s) of neighbor relationships to focus on among (eBGP, iBGP, IP)',
+						default: 'IP',
+						format: 'input'
+					},
+					{
+						name: 'node1Regex',
+						description: 'Regular expression to match the nodes names for one end of pair.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'node2Regex',
+						description: 'Regular expression to match the nodes names for the other end of the pair.',
+						default: '.*',
+						format: 'input'
+					}
+
+				]
+			},
+			{
+				name: 'Nodes',
+				description: 'Outputs the configuration of nodes in the network.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'nodeType',
+						description: 'Set of nodes to focus on among (BGP, ISIS, OSPF).',
+						default: '[]',
+						format: 'input'
+					},
+					{
+						name: 'summary',
+						description: '(True|False) which indicates if the full configuration or a summarized view should be output.',
+						default: 't',
+						format: 'input'
+					}
+
+				]
+			},
+			{
+				name: 'NodesPath',
+				description: 'Runs JsonPath https://github.com/jayway/JsonPath queries on the JSON data model that is the output of the \'Nodes\' question.',
+				paramaters: 
+				[
+					{
+						name: 'paths',
+						description: 'A JSON list of path queries, each of which is a JSON object containing the remaining documented fields (path, suffix, summary). For each specified path query, the question returns a list of paths in the data model matching the criteria of the query.',
+						default: '',
+						format: 'input'
+					},
+					{
+						name: 'path',
+						description: '(Property of each element of \'paths\') The JsonPath query to execute.',
+						default: '',
+						format: 'input'
+					},
+					{
+						name: 'suffix',
+						description: ' If true, then each path in the returned list will map to the remaining content of the datamodel at the end of that path. This can be useful for debugging, but can also be very verbose. If false, then each path will map to a null value.',
+						default: 'f',
+						format: 'tf'
+					},
+					{
+						name: 'summary',
+						description: ' If true, then instead of outputting each matching path, only the count of matching paths will be output.',
+						default: 'f',
+						format: 'tf'
+					}
+
+				]
+			},
+			{
+				name: 'OspfLoopbacks',
+				description: 'Lists which loopbacks interfaces are being announced into OSPF.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'PairwiseVpnConnectivity',
+				description: 'Checks if VPN connectivity between pairs of nodes is correctly configured.',
+				paramaters: 
+				[
+					{
+						name: 'node1Regex',
+						description: 'Regular expression to match the nodes names for one end of the sessions.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'node2Regex',
+						description: 'Regular expression to match the nodes names for the other end of the sessions.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'Reachability',
+				description: '',
+				paramaters: 
+				[
+
+				]
+			},
+			{
+				name: 'Routes',
+				description: 'Outputs all routes (RIB) at nodes in the network.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'SelfAdjacencies',
+				description: 'Outputs cases where two interfaces on the same node are in the same subnet.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'Traceroute',
+				description: 'Perform a traceroute.',
+				paramaters: 
+				[
+
+				]
+			},
+			{
+				name: 'UndefinedReferences',
+				description: 'Outputs cases where undefined structures (e.g., ACL, routemaps) are referenced.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'UniqueBgpPrefixOrigination',
+				description: 'Lists cases where the same prefix is originated by multiple BGP speakers.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			},
+			{
+				name: 'UniqueIpAssignments',
+				description: 'Lists IP addresses that are assigned to multiple interfaces.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					},
+					{
+						name: 'verbose',
+						description: '',
+						default: 'f',
+						format: 'tf'
+					}
+				]
+			},
+			{
+				name: 'UnusedStructures',
+				description: 'Outputs cases where structures (e.g., ACL, routemaps) are defined but not used.',
+				paramaters: 
+				[
+					{
+						name: 'nodeRegex',
+						description: 'Regular expression for names of nodes to include.',
+						default: '.*',
+						format: 'input'
+					}
+				]
+			}
+		]
+
+		function populateContainers()
+		{
+			var containerString="";
+			
+			for(var i=0;i<containers.length;i++)
+			{
+				appendContainer(containers[i].name,i);
+				for(var j=0;j<containers[i].rigs.length;j++)
+				{
+					appendRig(containers[i].rigs[j].name,i);
+				}
+			}
+			
+			
+		}
+
+		function populateOptions()
+		{
+			for(var i=0;i<containers.length;i++)
+			{
+				 appendOption("container",i,0);
+				for(var j=0;j<containers[i].rigs.length;j++)
+				{
+					appendOption("rig",i,j);
+				}
+
+			}
+		}
+
+		function initialize()
+		{
+			if(debug)
+			{
+				console.log("initialize()");
+			}
+			populateContainers();
+			populateOptions();
+		}
+
+		function update()
+		{
+			
+			$("#valueContainerName").val("");
+			$("#valueContainerDescription").val("");
+		}
+
+		function addContainerToArray(containerName, containerDescription)
+		{
+			if(debug)
+			{
+				console.log("addContainerToArray("+containerName+","+containerDescription+")");
+			}
+			containers.push(
+			{
+				name:containerName,
+				description:containerDescription,
+				rigs:[]
+			});
+		}
+		function appendContainer(containerName, index)
+		{
+			if(debug)
+			{
+				console.log("appendContainer("+containerName+","+index+")");
+			}
+			if(index==-1)
+			{
+				var index=containers.length-1;
+			}
+			$("#containerList").append('<a id="containerBlock'+index+'" href="#" class="list-group-item blue" data-toggle="collapse" data-target="#c'+index+'" onclick="showOptionPanel('+index+',0,\'viewContainer\');" data-parent="#containerList">'+containerName+'</a><div id="c'+index+'" class="sublinks collapse"><div id="c'+index+'writeOver"></div><a id="c'+index+'.new" class="list-group-item small blueText" onclick="showOptionPanel('+index+',-1,\'create\');"><span class="glyphicon glyphicon-plus"></span> New Test Rig </a></div>');
+		}
+		function writeParamaterDiv(index)
+		{		
+			var analysisString='';
+			for(var i=0;i<questions[index].paramaters.length;i++)
+			{
+				if(questions[index].paramaters[i].format=="input")
+				{
+					analysisString+='<div class="form-group"><label for="p'+i+'" data-toggle="tooltip" title="'+questions[index].paramaters[i].description+'">'+questions[index].paramaters[i].name+'</label><input id="p'+i+'" type="text" class="form-control" value="'+questions[index].paramaters[i].default+'"></div>';
+				}
+				else if(questions[index].paramaters[i].format=="textarea")
+				{
+					analysisString+='<div class="form-group"><label for="p'+i+'" data-toggle="tooltip" title="'+questions[index].paramaters[i].description+'">'+questions[index].paramaters[i].name+'</label><textarea id="p'+i+'" type="text" class="form-control" value="'+questions[index].paramaters[i].default+'"></textarea></div>'
+				}
+				else if(questions[index].paramaters[i].format=="tf")
+				{
+					analysisString+='<div class="form-group"><label for="p'+i+'" data-toggle="tooltip" title="'+questions[index].paramaters[i].description+'">'+questions[index].paramaters[i].name+'</label><br><div id="p'+i+'" class="btn-group" data-toggle="buttons">';	
+					if(questions[index].paramaters[i].default=="t")	
+					{
+						analysisString+= '<label id="p'+i+'c0Label" class="btn btn-outline active " ><input type="radio" id="p'+i+'c0" autocomplete="off" checked> True</label><label id="p'+i+'c1Label" class="btn btn-outline"><input type="radio"  id="p'+i+'c1" autocomplete="off"> False</label></div></div>';
+					}	
+					else
+					{
+						analysisString+='<label id="p'+i+'c0Label" class="btn btn-outline  " ><input type="radio" id="p'+i+'c0" autocomplete="off" > True</label><label id="p'+i+'c1Label" class="btn btn-outline active"><input type="radio"  id="p'+i+'c1" autocomplete="off" checked> False</label></div></div>';
+					}					
+											
+				}
+			}
+
+			$("#analysisParamaterWriteOver").html(analysisString);
+			// <div class="form-group">
+			// 								<label for="p1" data-toggle="tooltip" title="Regex expression to do this">Regex</label>
+			// 								<input id="p1" type="text" class="form-control" value=".*">
+			// 							</div>
+			// 							<div class="form-group">
+			// 								<label for="p2" data-toggle="tooltip" title="Regex expression to do this">Options</label>
+			// 								<textarea id="p2" type="text" class="form-control" value=""></textarea> 
+			// 							</div>
+			// 							<div class="form-group">
+			// 								<label for="p3" data-toggle="tooltip" title="Regex expression to do this">T/F</label>
+			// 								<div id="p3" class="btn-group" data-toggle="buttons">	
+			// 									<label class="btn btn-outline active " >
+			// 										<input type="radio" id="p3o1" autocomplete="off" checked> True
+			// 									</label>
+			// 									<label class="btn btn-outline">
+			// 										<input type="radio"  id="p3o2" autocomplete="off"> False
+			// 									</label>
+			// 								</div>
+			// 							</div>
+		}
+		function appendRig(rigName, containerIndex)
+		{
+			if(debug)
+			{
+				console.log("appendRig("+rigName+","+containerIndex+")");
+			}
+			rigIndex=containers[containerIndex].rigs.length-1;
+			$("#c"+containerIndex+"writeOver").append('<a id="c'+containerIndex+'.'+rigIndex+'" class="list-group-item small blueText" onclick="showOptionPanel('+containerIndex+','+rigIndex+',\'viewRig\');">'+rigName+'</a>');
+
+		}
+		function appendOption(type,origin,sub)
+		{
+			if(debug)
+			{
+				console.log("appendOption("+type+","+origin+","+sub+")");
+			}
+			if(type=="container")
+			{
+				$("#optionsOverwrite").append('<div id="containerOption'+origin+'" class="rigOptionEntry rigOptionHidden"><h3>Container: '+containers[origin].name+'</h3><br><br><h3>Description: </h3><br><p>'+containers[origin].description+'</p></div>');
+			}
+			else if(type=="rig")
+			{
+				// $("#optionsOverwrite").append('<div id="rigOptionC'+origin+'R'+sub+'" class="rigOptionEntry rigOptionHidden">
+				// 	<span class="rigName">'+containers[origin].rigs[sub]+'</span>
+				// 	<br>
+					
+				// 	</div>');
+
+				// '<a id="containerBlock'+index+'" href="#" class="list-group-item blue" data-toggle="collapse" data-target="#c'+index+'" onclick="showOptionPanel('+index+',0,\'viewContainer\');" data-parent="#containerList">'+containerName+'</a><div id="c'+index+'" class="sublinks collapse"><div id="c'+index+'writeOver"></div><a id="c'+index+'.new" class="list-group-item small blueText" onclick="showOptionPanel('+index+',-1,\'create\');"><span class="glyphicon glyphicon-plus"></span> New Test Rig </a></div>'
+				
+				$("#optionsOverwrite").append('<div id="c'+origin+'r'+sub+'Options" class="rigOptionEntry rigOptionHidden"><h3>Test Rig: '+containers[origin].rigs[sub].name+'</h3><div class="panel list-group"><a href="#" id="c'+origin+'r'+sub+'Node" class="list-group-item blue" data-toggle="collapse" data-target="#c'+origin+'r'+sub+'NodeSub" data-parent="#c'+origin+'r'+sub+'Options">Nodes</a><div id="c'+origin+'r'+sub+'NodeSub" class="sublinks collapse" onclick="showQuestionPanel(0,0,\'view\');"></div><a href="#" id="c'+origin+'r'+sub+'Analyses" class="list-group-item blue" data-toggle="collapse" data-target="#c'+origin+'r'+sub+'AnalysesSub" data-parent="#c'+origin+'r'+sub+'Options">Analyses</a><div id="c'+origin+'r'+sub+'AnalysesSub" class="sublinks collapse"><div id="c'+origin+'r'+sub+'AnalysesSubWriteOver"></div><a id="c'+origin+'r'+sub+'NewAnalysis" class="list-group-item small blueText" onclick="showQuestionPanel(1,-1,\'create\')"><span class="glyphicon glyphicon-plus"></span> New Analysis</a></div><a href="#" id="c'+origin+'r'+sub+'Environment" class="list-group-item blue" data-toggle="collapse" data-target="#c'+origin+'r'+sub+'EnvironmentSub" data-parent="#c'+origin+'r'+sub+'Options" >Environment</a><div id="c'+origin+'r'+sub+'EnvironmentSub" class="sublinks collapse"><div id="c'+origin+'r'+sub+'EnvironmentSubWriteOver"><a id="c'+origin+'r'+sub+'Environment0" class="list-group-item small blueText" onclick="showQuestionPanel(2,0,\'viewEnvironment\')"> EV_1 </a></div><a id="c'+origin+'r'+sub+'NewEnvironment" class="list-group-item small blueText" onclick="showQuestionPanel(2,-1,\'create\')"><span class="glyphicon glyphicon-plus"></span> New Environment</a></div></div></div>');
+			}
+		}
+		
+		function createParamatersForResults(index)
+		{		
+			var analysisString='<form><h3>'+containers[CURRENTCONTAINERINDEX].rigs[CURRENTTESTRIGINDEX].analyses[index].name+'</h3>';
+			for(var i=0;i<questions[index].paramaters.length;i++)
+			{
+				if(questions[index].paramaters[i].format=="input")
+				{
+					analysisString+='<div class="form-group"><label for="p'+i+'"  data-toggle="tooltip" title="'+questions[index].paramaters[i].description+'">'+questions[index].paramaters[i].name+'</label><input readonly id="p'+i+'" type="text" class="form-control" value="'+questions[index].paramaters[i].default+'"></div>';
+				}
+				else if(questions[index].paramaters[i].format=="textarea")
+				{
+					analysisString+='<div class="form-group"><label for="p'+i+'" data-toggle="tooltip" title="'+questions[index].paramaters[i].description+'">'+questions[index].paramaters[i].name+'</label><textarea readonly id="p'+i+'" type="text" class="form-control" value="'+questions[index].paramaters[i].default+'"></textarea></div>'
+				}
+				else if(questions[index].paramaters[i].format=="tf")
+				{
+					analysisString+='<div class="form-group"><label for="p'+i+'" data-toggle="tooltip" title="'+questions[index].paramaters[i].description+'">'+questions[index].paramaters[i].name+'</label><br><div id="p'+i+'" class="btn-group" data-toggle="buttons">';	
+					if(questions[index].paramaters[i].default=="t")	
+					{
+						analysisString+= '<label class="btn btn-outline active " ><input readonly type="radio" id="p'+i+'c0" autocomplete="off" checked> True</label><label class="btn btn-outline"><input type="radio"  id="p'+i+'c1" autocomplete="off"> False</label></div></div>';
+					}	
+					else
+					{
+						analysisString+='<label class="btn btn-outline  " ><input readonly type="radio" id="p'+i+'c0" autocomplete="off" > True</label><label class="btn btn-outline active"><input type="radio"  id="p'+i+'c1" autocomplete="off" checked> False</label></div></div>';
+					}					
+											
+				}
+			}
+			analysisString+="</form>";
+			return(analysisString);
+		}
+
+
+		function appendAnalysis(origin,sub, name)
+		{
+			//CONOR NOTES
+			//Need to run showQuestionPanel with the correct arguments
+			var index=containers[CURRENTCONTAINERINDEX].rigs[CURRENTTESTRIGINDEX].analyses.length-1;
+			$("#c"+origin+"r"+sub+"AnalysesSubWriteOver").append('<a id="c'+origin+'r'+sub+'Analysis'+index+'" class="list-group-item small blueText" onclick="showQuestionPanel(1,'+index+',\'viewAnalysis\');">'+name+'</a>');
+		}
+		function createContainer()
+		{
+			if(debug)
+			{
+				console.log("createContainer()");
+			}
+
+			var name=$("#valueContainerName").val();
+			
+			var description=$("#valueContainerDescription").val();
+			
+			addContainerToArray(name,description);
+			
+			appendContainer(name,-1);
+			
+			
+			appendOption("container",containers.length-1,-1);
+			update();
+			showOptionPanel(containers.length-1,0,"viewContainer");
+			$("#c".concat(containers.length-1)).collapse('toggle');
+
+		}
+		function writeAnalysisResults(index)
+		{
+			var analysisString='<div class="panel-group"><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" href="#c'+CURRENTCONTAINERINDEX+'r'+CURRENTTESTRIGINDEX+'a'+index+'paramater"><h4 class="panel-title"><a>Paramaters</a></h4></div><div id="c'+CURRENTCONTAINERINDEX+'r'+CURRENTTESTRIGINDEX+'a'+index+'paramater" class="panel-collapse collapse"><div id="c'+CURRENTCONTAINERINDEX+'r'+CURRENTTESTRIGINDEX+'a'+index+'paramaterBody" class="panel-body">'+createParamatersForResults(index)+'</div></div></div><div class="panel panel-success"><div class="panel-heading" data-toggle="collapse" href="#c'+CURRENTCONTAINERINDEX+'r'+CURRENTTESTRIGINDEX+'a'+index+'results"><h4 class="panel-title"><a>Results</a></h4></div><div id="c'+CURRENTCONTAINERINDEX+'r'+CURRENTTESTRIGINDEX+'a'+index+'results" class="panel-collapse collapse"><div id="c'+CURRENTCONTAINERINDEX+'r'+CURRENTTESTRIGINDEX+'a'+index+'resultsBody" class="panel-body">{name: \'AclReachability\',description: \'Identifies unreachable lines in ACLs.\',paramaters: [{name: \'aclNameRegex\',description: \'Regular expression for names of the ACLs to analyze.\',default: \'.*\',format: \'input\'},{name: \'nodeRegex\',description: \'Regular expression for names of nodes to include.\',default: \'.*\',format: \'input\'}]}</div></div></div></div>';
+			$("#analysisOverwrite").html(analysisString);
+		}
+
+		function addRigToArray(rigName)
+		{
+			if(debug)
+			{
+				console.log("addRigToArray("+rigName+")");
+			}
+			
+			
+			containers[CURRENTCONTAINERINDEX].rigs.push(
+						{
+							name: rigName,
+							nodes: [],
+							analyses: [],
+							environment: []
+
+						});
+			
+		}
+		function addAnalysisToArray(analysisName,analysisType,analysisParameters)
+		{
+			containers[CURRENTCONTAINERINDEX].rigs[CURRENTTESTRIGINDEX].analyses.push(
+				{
+					name:analysisName,
+					type:analysisType,
+					parameters:analysisParameters
+				});
+		}
+		function createRig()
+		{
+			if(debug)
+			{
+				console.log("createRig()");
+			}
+			if($('#radioGeneratedName').is(':checked'))
+			{
+				var rigName=$('#valueGeneratedName').val();
+			}
+			else
+			{
+				var rigName=$('#valueCustomName').val();
+			}
+			var containerName=CURRENTCONTAINER.name;
+			var containerIndex=CURRENTCONTAINERINDEX;
+			
+			addRigToArray(rigName);
+			
+			appendRig(rigName,containerIndex);
+			
+			appendOption("rig",containerIndex,rigIndex);
+			showOptionPanel(CURRENTCONTAINERINDEX,rigIndex,'viewRig');
+			//update();
+		}
+
+
+
+
+
+		function createAnalysis()
+		{
+			var analysisName=$("#analysisName").val();
+			var analysisType=$("#analysisType").prop('selectedIndex');
+			var analysisParameters=[];
+			index=$("#analysisType").prop('selectedIndex');
+			for(var i=0;i<questions[index].paramaters.length;i++)
+			{
+				if(questions[index].paramaters[i].type=="tf")
+				{
+					if($("#p"+index+"c0Label").hasClass('active'))
+					{
+						analysisParameters.push('t');
+					}
+					else
+					{
+						analysisParameters.push('f');
+					}
+				}
+				else
+				{
+					analysisParameters.push($("#p"+i).val());
+				}
+				
+			}
+			var analysisNumber=containers[CURRENTCONTAINERINDEX].rigs[CURRENTTESTRIGINDEX].analyses.length;
+			addAnalysisToArray(analysisName, analysisType, analysisParameters);
+			appendAnalysis(CURRENTCONTAINERINDEX,CURRENTTESTRIGINDEX,analysisName);
+			showQuestionPanel(1,analysisNumber,'view');
+			
+			
+		}
+
+		function showQuestionPanel(origin, sub, action)
+		{
+			if(debug)
+			{
+				console.log("showQuestionPanel("+origin+","+sub+","+action+")");
+			}
+			if(origin==0)
+			{
+				//Nodes page
+			}
+			else if(origin==1)
+			{
+				//Analysis
+				if(sub==-1)
+				{
+					//Create analysis
+					$("#createAnalysisOption").toggleClass('analysisOptionHidden').toggleClass('analysisOptionVisible');
+
+				}
+				else
+				{
+					CURRENTANALYSISINDEX=sub;
+					$("#createAnalysisOption").toggleClass('analysisOptionHidden').toggleClass('analysisOptionVisible');
+					writeAnalysisResults(CURRENTANALYSISINDEX);
+				}
+				
+			}
+			else if(origin==2)
+			{
+				//Environment
+			}
+
+
+
+
+		}
+		function populateAnalysisTypeSelect()
+		{
+			for(var i=0;i<questions.length;i++)
+			{
+				$("#analysisType").append('<option id=analysisType'+i+'>'+questions[i].name+'</option>');
+			}
+		}
+		function showOptionPanel(origin, sub, action)
+		{
+			if(origin==-1)
+			{
+				CURRENTCONTAINER="CREATE";
+				CURRENTCONTAINERINDEX=-1;
+				CURRENTTESTRIG="CREATE";
+				CURRENTTESTRIGINDEX=0;
+				
+			}
+			else if(sub==-1)
+			{
+				CURRENTCONTAINER=containers[origin];
+				CURRENTCONTAINERINDEX=origin;
+				CURRENTTESTRIG="CREATE";
+				CURRENTTESTRIGINDEX=-1;
+			}
+			else
+			{
+				CURRENTCONTAINER=containers[origin];
+				CURRENTCONTAINERINDEX=origin;
+				CURRENTTESTRIG=containers[origin].rigs[sub];
+				CURRENTTESTRIGINDEX=sub;
+			}
+			
+			if(debug)
+			{
+				console.log("showOptionPanel("+origin+","+sub+","+action+")");
+			}
+			$( ".rigOptionVisible" ).toggleClass("rigOptionVisible").toggleClass("rigOptionHidden");
+			if(action=="create")
+			{
+				if(origin==-1)
+				{	
+					$("#createContainerOption").toggleClass("rigOptionHidden").toggleClass("rigOptionVisible");
+				}
+				else
+				{
+					$("#createRigOption").toggleClass("rigOptionHidden").toggleClass("rigOptionVisible");
+					$("#testRigContainer").val(CURRENTCONTAINER.name);
+				}
+			}
+			else if(action=="viewContainer")
+			{
+				$("#containerOption"+origin).toggleClass("rigOptionHidden").toggleClass("rigOptionVisible");
+			}
+			else if(action=="viewRig")
+			{
+				$("#c"+origin+"r"+sub+"Options").toggleClass("rigOptionHidden").toggleClass("rigOptionVisible");
+			}
+		}
+
+		
+				$( document ).one('ready',initialize());
+				$( document ).one('ready',populateAnalysisTypeSelect());
+		$(function() {
+
+
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+  
+});
+	</script>
+    
+</body>
+
+</html>
